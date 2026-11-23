@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Expense Tracker</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💰 Personal Expense Tracker</h1>
+
+    <h2>Add Your Expenses</h2>
+
+    <form method="POST" action="/">
+
+        <input type="text"
+        name="expense_name"
+        placeholder="Expense Name"
+        required>
+
+        <input type="number"
+        name="amount"
+        placeholder="Amount"
+        step="0.01"
+        required>
+
+        <select name="category">
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Shopping</option>
+            <option>Education</option>
+            <option>Other</option>
+        </select>
+
+        <button type="submit">Add Expense</button>
+
+    </form>
+
+    <h2>Your Expenses</h2>
+
+    {% for expense in expenses %}
+
+    <div class="expense">
+
+        <p>Name: {{ expense[1] }}</p>
+
+        <p>Amount: ₹{{ expense[2] }}</p>
+
+        <p>Category: {{ expense[3] }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
